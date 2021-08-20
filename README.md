@@ -31,6 +31,7 @@
     b. Enable Kuberenetes engine API and wait for new UI to appear on screen
     c. Now click on create button under Kubernetes clusters card
     d. New page appears, it consists of settings, change settings as shown in the image below
-
+    ![1](https://user-images.githubusercontent.com/58284442/130213589-4ff6b72a-2575-418e-9bd2-ddd341b92501.PNG)
+    ![2](https://user-images.githubusercontent.com/58284442/130213611-04b7209a-88ee-41f8-937f-fbe2a8090988.PNG)
     e. Click o create then
     
