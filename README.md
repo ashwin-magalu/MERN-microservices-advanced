@@ -74,4 +74,4 @@
         v. Update the IP address present in front of ticketing.dev URL to new IP address you copied from Google Cloud
     e. Restart Skaffold: 
         i. Run in the root directory: skaffold dev
-
+    f. Open https://ticketing.dev/api/users/currentuser in your browser now to check whether everything is working fine
