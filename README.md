@@ -64,16 +64,16 @@
         - Visit https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke --> For Google Cloud. Run in the root directory: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/provider/cloud-generic.yaml
 
         Load Balancer:
-                Outside World --> Load Balancer --|
-                            Cloud Provider[ingress controller --> Pods]
+            Outside World --> Load Balancer --|
+                                        Cloud Provider[ingress controller --> Pods]
             Config file containing router rules --|
 
     - Update our hosts file again to point to the remote cluster:
-        i. Open the burger menu in top left corner and go to Network services > Load balancing
-        ii. Click on the load balancer name generated
-        iii. Copy the IP address from the TCP label
-        iv. Open Hosts file from C:\Windows\System32\Drivers\etc\hosts
-        v. Update the IP address present in front of ticketing.dev URL to new IP address you copied from Google Cloud
+        - Open the burger menu in top left corner and go to Network services > Load balancing
+        - Click on the load balancer name generated
+        - Copy the IP address from the TCP label
+        - Open Hosts file from C:\Windows\System32\Drivers\etc\hosts
+        - Update the IP address present in front of ticketing.dev URL to new IP address you copied from Google Cloud
     - Restart Skaffold: 
-        i. Run in the root directory: skaffold dev
+        - Run in the root directory: skaffold dev
     - Open https://ticketing.dev/api/users/currentuser in your browser now to check whether everything is working fine
