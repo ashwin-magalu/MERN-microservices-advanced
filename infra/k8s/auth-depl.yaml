@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: ashwin2604/auth
+          image: us.gcr.io/mern-microservices/auth # For Google Cloud
 
 ---
 apiVersion: v1
@@ -29,3 +29,6 @@ spec:
       protocol: TCP
       port: 3002
       targetPort: 3002
+          
+          
+          #image: ashwin2604/auth # For Docker Desktop

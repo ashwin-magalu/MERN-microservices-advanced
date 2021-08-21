@@ -1,3 +1,25 @@
+# This is for docker desktop
+
+# apiVersion: skaffold/v2alpha3
+# kind: Config
+# deploy:
+#   kubectl:
+#     manifests:
+#       - ./infra/k8s/*
+# build:
+#   local:
+#     push: false
+#   artifacts:
+#     - image: ashwin2604/auth
+#       context: auth
+#       docker:
+#         dockerfile: Dockerfile
+#       sync:
+#         manual:
+#           - src: "src/**/*.ts"
+#             dest: .
+
+# This is for google cloud
 apiVersion: skaffold/v2alpha3
 kind: Config
 deploy:
@@ -5,14 +27,14 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  local:
-    push: false
+  googleCloudBuild:
+    projectId: mern-microservices
   artifacts:
-    - image: ashwin2604/auth
+    - image: us.gcr.io/mern-microservices/auth
       context: auth
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "src/**/*.ts"
+          - src: 'src/**/*.ts'
             dest: .

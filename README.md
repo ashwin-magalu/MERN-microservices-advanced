@@ -33,5 +33,45 @@
     d. New page appears, it consists of settings, change settings as shown in the image below
     ![1](https://user-images.githubusercontent.com/58284442/130213589-4ff6b72a-2575-418e-9bd2-ddd341b92501.PNG)
     ![2](https://user-images.githubusercontent.com/58284442/130213611-04b7209a-88ee-41f8-937f-fbe2a8090988.PNG)
-    e. Click o create then
+    e. Click on create button
     
+4. Kubectl contexts:
+    Run the following command: kubectl get pods
+        i. Type 1: Your Computer(Kubectl) ---> Your Computer(Context for C #1) --> Cluster #1
+                                           |-> Your Computer(Context for C #1) --> Cluster #1
+        ii. Type 2: Install Google Cloud SDK. It is easiest way
+            Visit https://cloud.google.com/sdk/docs/quickstart to learn more about how to install
+            Install GCloud SDK and follow the steps:
+                a. Login to gcloud: gcloud auth login
+                b. Initialize GCloud: gcloud init and follow the steps
+5. Installing the GCloud Context:
+    There are two ways:
+        1. Don't want to run Docker at all?
+            a. Close Docker Desktop
+            b. Run in Powershell as Administrator: gcloud components install kubectl
+            c. Run in Powershell as Administrator: gcloud container clusters get-credentials <clusterName>
+        2. OK still running Docker?
+            a. Run in Powershell as Administrator: gcloud container clusters get-credentials <clusterName>
+6. Right click on docker icon in bottom right corner of your screen, click on kubernetes. You will see different contexts, you can select whichever you like, whether docker desktop or our new google cloud context we created few minutes back
+7. Updating the Skaffold configuration:
+    a. Enable Google Cloud Build
+        i. Open the burger menu in top left corner and go to Cloud Build > Enable it
+    b. Update the skaffold.yaml file to use Google Cloud Build and update image in auth-depl.yaml to us.gcr.io/<yourCloudCusterId>/auth
+    c. Setup ingress-nginx on your google cloud cluster (Load Balancer): https://kubernetes.github.io/ingress-nginx
+        i. Run in the root directory: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/mandatory.yaml
+        ii. Visit https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke --> For Google Cloud. Run in the root directory: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/provider/cloud-generic.yaml
+
+        Load Balancer:
+                Outside World --> Load Balancer --|
+                            Cloud Provider[ingress controller --> Pods]
+            Config file containing router rules --|
+
+    d. Update our hosts file again to point to the remote cluster:
+        i. Open the burger menu in top left corner and go to Network services > Load balancing
+        ii. Click on the load balancer name generated
+        iii. Copy the IP address from the TCP label
+        iv. Open Hosts file from C:\Windows\System32\Drivers\etc\hosts
+        v. Update the IP address present in front of ticketing.dev URL to new IP address you copied from Google Cloud
+    e. Restart Skaffold: 
+        i. Run in the root directory: skaffold dev
+
