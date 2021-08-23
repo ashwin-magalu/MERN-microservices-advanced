@@ -77,3 +77,15 @@
     - Restart Skaffold: 
         - Run in the root directory: skaffold dev
     - Open https://ticketing.dev/api/users/currentuser in your browser now to check whether everything is working fine
+
+# DB management and modeling
+## Creating DB in Kubernetes
+1. Create a new file named auth-mongo-depl.yaml in k8s folder
+2. Restart Skaffold
+3. Run: kubectl get pods
+
+    If we delete or restart the pod running mongoDB, we will lose all of the data in it.
+
+## Connecting to MongoDB
+1. Install mongoose and connect to DB using Host and Port you added in auth-mongo-depl.yaml
+
