@@ -15,6 +15,12 @@ spec:
       containers:
         - name: auth
           image: us.gcr.io/mern-microservices/auth # For Google Cloud
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
 
 ---
 apiVersion: v1
@@ -28,7 +34,7 @@ spec:
     - name: auth
       protocol: TCP
       port: 3002
-      targetPort: 3002
-          
-          
-          #image: ashwin2604/auth # For Docker Desktop
+      targetPort:
+        3002
+
+        #image: ashwin2604/auth # For Docker Desktop
