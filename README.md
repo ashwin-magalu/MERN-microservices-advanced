@@ -149,3 +149,31 @@ You can debug your jwt in https://jwt.io/ website
 
 2. Run command: kubectl get secrets --> to get list of all secret keys you have created
 3. Update depl.yaml file to include these secret keys under env
+
+# Testing with Microservices
+
+## Scope of Our Tests:
+
+- Test a single piece of code in isolation --> Single middleware
+- Test how different pieces of code work together --> Request following through multiple middlewares to a request handler
+- Test how different components work together --> Make a request to service, ensure write to database was completed
+- Test how different services work together --> Creating a 'payment' at the 'payments' service should affect the 'orders' service
+
+We will run these tests using our terminal. We will use Jest for testing
+
+## Basic Request Handling Testing
+
+1. We create app.ts file inside auth folder's src folder for testing, which won't listen to any set PORT
+2. Install the following dependencies as development dependencies: npm i --save-dev @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server
+3. Add a new script in package.json file of auth: "test": "jest --watchAll --no-cache"
+4. Add another block just for 'jest' inside package.json file of auth:
+   "jest": {
+   "preset": "ts-jest",
+   "testEnvironment": "node",
+   "setupFilesAfterEnv": [
+   "./src/test/setup.ts"
+   ]
+   },
+5. Create a new folder within src folder of auth named as "test", within test folder, create a new file named "setup.ts" and add code as shown in that file
+6. To test 'signup handler' we will create a new folder inside routes folder (parent folder of the file we are planning to test) of auth named as "_test_". Inside this folder create a new file named "signup.test.ts" and add code as shown in that file. We follow the same convention in testing all files.
+7. Now run the command: npm run test
