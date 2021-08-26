@@ -177,3 +177,32 @@ We will run these tests using our terminal. We will use Jest for testing
 5. Create a new folder within src folder of auth named as "test", within test folder, create a new file named "setup.ts" and add code as shown in that file
 6. To test 'signup handler' we will create a new folder inside routes folder (parent folder of the file we are planning to test) of auth named as "_test_". Inside this folder create a new file named "signup.test.ts" and add code as shown in that file. We follow the same convention in testing all files.
 7. Now run the command: npm run test
+
+# Creating a Front End
+
+1. Create a new folder named "client" and in terminal get inside to Client directory
+2. run npm init -y
+3. Install following dependencies using command: npm i react react-dom next
+4. Create Dockerfile and .dockerignore files
+5. Create a new file in k8s folder named "client-depl.yaml"
+6. Edit skaffold.yaml file to add client image under artifacts section and also edit ingress-srv.yaml file to add new path
+7. Run: skaffold dev
+8. Add next.config.js file in client folder
+9. Kill the client kubectl pod using following commands:
+
+- kubectl get pods
+- kubectl delete pod <podName>
+- kubectl get pods
+
+10. To see all namespaces type command: kubectl get namespace
+11. To see all services within different namespaces type command: kubectl get services -n <namespaceName>
+
+getInitialProps executed on Server in these cases:
+  - Hard refresh of the page
+  - Clicking link from different domain
+  - Typing URL into address bar
+
+getInitialProps executed on Client in these cases:
+  - Navigating from one page to another while in the appropriate
+
+
