@@ -198,11 +198,55 @@ We will run these tests using our terminal. We will use Jest for testing
 11. To see all services within different namespaces type command: kubectl get services -n <namespaceName>
 
 getInitialProps executed on Server in these cases:
-  - Hard refresh of the page
-  - Clicking link from different domain
-  - Typing URL into address bar
+
+- Hard refresh of the page
+- Clicking link from different domain
+- Typing URL into address bar
 
 getInitialProps executed on Client in these cases:
-  - Navigating from one page to another while in the appropriate
 
+- Navigating from one page to another while in the appropriate
 
+# Code Sharing and Reuse Between Services
+
+Options for Sharing common code:
+
+- Copy Paste common code in all required directories
+- Sharing common codes using Git Submodule
+- Publishing all the common code as a NPM package
+
+##### We will follow third method here. So to publish a NPM package, follow these steps:
+
+- Open https://npmjs.com website
+- Create an account
+- Click on your Image > select Add Organization
+- Add organization name and click on create button
+- Go to root directory and create a new folder named "common" and change terminal directory to "common"
+- Run: npm init -y
+- Change name inside the package.json file to "@<yourOrganizationNameAsPerInNM>/common"
+- Run commands:
+  - git init
+  - git add .
+  - git commit -m "initial commit"
+- Run: npm login
+- Run: npm publish --access public
+- Run: tsc --init
+- Run: npm i typescript del-cli --save-dev
+- Edit tsconfig.json file and package.json file
+- Create index.js file inside src folder
+- Run: npm run build --> This will create build folder
+- Run commands:
+  - git add .
+  - git commit -m "second commit"
+  - npm version patch --> To update the version number
+  - npm run build
+  - npm publish
+- Don't use pub script which is inside package.json in real applications
+- Move errors and middlewares folders from auth folder to common folder
+- Stop Skaffold
+- Run: npm i express-validator jsonwebtoken express cookie-session @types/cookie-session @types/express @types/jsonwebtoken
+- Run: tsc
+- Run: npm run pub
+- Run: npm i @ashwin-ma/common --> In auth folder
+- Rewrite errors and middlwares imports in auth folder
+- Re-run skaffold to test is everything is working
