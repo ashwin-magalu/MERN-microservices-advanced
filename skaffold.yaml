@@ -47,3 +47,12 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
+
+    - image: us.gcr.io/mern-microservices/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.ts"
+            dest: .

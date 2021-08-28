@@ -250,3 +250,14 @@ Options for Sharing common code:
 - Run: npm i @ashwin-ma/common --> In auth folder
 - Rewrite errors and middlwares imports in auth folder
 - Re-run skaffold to test is everything is working
+- You can find Common folder and its code in: https://github.com/ashwin-magalu/common-npm-package
+
+# Create-Read-Update-Destroy Server Setup
+
+- Copy package.json, Dockerfile, .dockerignore, app.ts, index.ts, .gitignore and tsconfig.json files and test folder from auth folder to tickets folder
+- Run: npm i --> inside tickets folder
+- Remove redundant imports and codes related to them, update name in package.json
+- Create tickets-depl.yaml and tickets-mongo-depl.yaml files in k8s folder and add the configuration
+- Update the skaffold.yaml file
+- Update the ingress-srv.yaml file inside the k8s folder
+- Add code and test the URL's

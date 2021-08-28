@@ -7,15 +7,15 @@ interface UserAttrs {
   password: string;
 }
 
-/* An interface that describes the properties that an User Model has */
-interface UserModel extends mongoose.Model<UserDoc> {
-  build(attrs: UserAttrs): UserDoc;
-}
-
 /* An interface that describes the properties that an User document has */
 interface UserDoc extends mongoose.Document {
   email: string;
   password: string;
+}
+
+/* An interface that describes the properties that an User Model has */
+interface UserModel extends mongoose.Model<UserDoc> {
+  build(attrs: UserAttrs): UserDoc;
 }
 
 const userSchema = new mongoose.Schema(
