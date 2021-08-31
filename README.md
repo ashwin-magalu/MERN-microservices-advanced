@@ -261,3 +261,37 @@ Options for Sharing common code:
 - Update the skaffold.yaml file
 - Update the ingress-srv.yaml file inside the k8s folder
 - Add code and test the URL's
+
+# NATS Streaming Server - An event bus implementation - https://docs.nats.io
+NATS is a connective technology that powers modern distributed systems. A connective technology is responsible for addressing and discovery and exchanging of messages that drive the common patterns in distributed systems; asking and answering questions, aka services/microservices, and making and processing statements, or stream processing.
+- NATS and NATS Streaming Server are two different things
+- NATS Streaming implements some extraordinary important design decisions that will affect our application
+- We are going to run the official "nats-streaming" docker image in kubernetes. Need to read the image's docs
+- Check out https://docs.nats.io/nats-streaming-concepts/intro , https://docs.nats.io/nats-streaming-server/changes and https://hub.docker.com/_/nats-streaming
+- Focus on "Commandline Options" in https://hub.docker.com/_/nats-streaming website
+
+- Create a file named "nats-depl.yaml" inside k8s folder
+- Run: skaffold dev
+- Run: kubectl get pods
+
+# Building a NATS test project
+- Create a new folder named "nats-test" in the root directory
+- Run following commands:
+  - cd nats-test
+  - npm init -y
+  - npm i node-nats-streaming ts-node-dev typescript @types/node
+  - tsc --init
+- Create src folder within nats-test folder
+- Create two files named publisher.ts and listener.ts inside the src folder
+- Add scripts in package.json file
+- Edit publisher.ts file
+- Run following commands:
+  - kubectl get pods
+  - kubectl port-forward <nats-depl-pod-name> 4222:4222
+- Run: npm run publish --> in another terminal
+- Edit listener.ts file
+- Run: npm run listen --> in another terminal
+- Run: rs --> to restart the publisher or listener files
+- Run: kubectl port-forward <nats-depl-pod-name> 8222:8222
+- Open http://localhost:8222/streaming and http://localhost:8222/streaming/channelsz?subs=1 in the browser to see data
+- 
