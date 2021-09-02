@@ -263,7 +263,9 @@ Options for Sharing common code:
 - Add code and test the URL's
 
 # NATS Streaming Server - An event bus implementation - https://docs.nats.io
+
 NATS is a connective technology that powers modern distributed systems. A connective technology is responsible for addressing and discovery and exchanging of messages that drive the common patterns in distributed systems; asking and answering questions, aka services/microservices, and making and processing statements, or stream processing.
+
 - NATS and NATS Streaming Server are two different things
 - NATS Streaming implements some extraordinary important design decisions that will affect our application
 - We are going to run the official "nats-streaming" docker image in kubernetes. Need to read the image's docs
@@ -275,6 +277,7 @@ NATS is a connective technology that powers modern distributed systems. A connec
 - Run: kubectl get pods
 
 # Building a NATS test project
+
 - Create a new folder named "nats-test" in the root directory
 - Run following commands:
   - cd nats-test
@@ -294,4 +297,6 @@ NATS is a connective technology that powers modern distributed systems. A connec
 - Run: rs --> to restart the publisher or listener files
 - Run: kubectl port-forward <nats-depl-pod-name> 8222:8222
 - Open http://localhost:8222/streaming and http://localhost:8222/streaming/channelsz?subs=1 in the browser to see data
-- 
+- Copy paste base-listener, base-publisher, subjects and ticket-created-event files from nats-test folder to events folder in common directory and modify as required
+- Run: npm run pub --> in common directory
+- Run: kubectl delete pod <nats-depl-pod-name>
