@@ -300,3 +300,9 @@ NATS is a connective technology that powers modern distributed systems. A connec
 - Copy paste base-listener, base-publisher, subjects and ticket-created-event files from nats-test folder to events folder in common directory and modify as required
 - Run: npm run pub --> in common directory
 - Run: kubectl delete pod <nats-depl-pod-name>
+
+# Managing a NATS client
+
+- Move to tickets folder
+- Create a new folder called "events" within src folder of tickets. Within "events" folder, create one more folder named "publishers"
+- Create a new file within src folder of tickets, called "nats-wrapper.ts"
