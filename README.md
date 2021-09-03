@@ -306,3 +306,9 @@ NATS is a connective technology that powers modern distributed systems. A connec
 - Move to tickets folder
 - Create a new folder called "events" within src folder of tickets. Within "events" folder, create one more folder named "publishers"
 - Create a new file within src folder of tickets, called "nats-wrapper.ts"
+
+# Cross-Service Data Replication In Action
+- Create files inside orders folder
+- Create orders-depl.yaml and orders-mongo-depl.yaml files within k8s directory
+- Add orders image to skaffold.yaml file
+- Add orders path in ingress-srv.yaml file

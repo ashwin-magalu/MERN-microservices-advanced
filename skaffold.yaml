@@ -56,3 +56,12 @@ build:
         manual:
           - src: "**/*.ts"
             dest: .
+
+    - image: us.gcr.io/mern-microservices/orders
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.ts"
+            dest: .
