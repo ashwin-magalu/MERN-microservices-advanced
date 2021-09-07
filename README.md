@@ -308,7 +308,25 @@ NATS is a connective technology that powers modern distributed systems. A connec
 - Create a new file within src folder of tickets, called "nats-wrapper.ts"
 
 # Cross-Service Data Replication In Action
+
 - Create files inside orders folder
 - Create orders-depl.yaml and orders-mongo-depl.yaml files within k8s directory
 - Add orders image to skaffold.yaml file
 - Add orders path in ingress-srv.yaml file
+
+# Listening for Events and Handling Concurrency Issues
+
+- Create Listeners in orders directory to listen to ticket creation event
+- Create Listeners in orders directory to listen to ticket updation event
+- Create instances of these listeners in index.ts file
+- Run: npm i mongoose-update-if-current --> In tickets directory
+
+When should we increment or include the 'version' number of a record with an event?
+Increment the 'version' number whenever the primary service responsible for a record emits an event to describe a create/update/destroy to a record.
+
+# Worker Services
+
+- Create expiration folder within root directory
+- Install required dependencies
+- Create expiration-redis-depl.yaml and expiration-depl.yaml files in k8s directory
+- Edit skaffold.yaml file to add paths

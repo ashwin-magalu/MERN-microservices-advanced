@@ -1,11 +1,17 @@
 import request from "supertest";
+import mongoose from "mongoose";
 
 import { app } from "../../app";
 import { Order, OrderStatus } from "../../models/order";
 import { Ticket } from "../../models/ticket";
+import { natsWrapper } from "../../nats-wrapper";
 
 it("marks an order as cancelled", async () => {
-  const ticket = Ticket.build({ title: "concert", price: 20 });
+  const ticket = Ticket.build({
+    id: mongoose.mongo.ObjectId(),
+    title: "concert",
+    price: 20,
+  });
   await ticket.save();
 
   const user = global.signin();
@@ -28,7 +34,11 @@ it("marks an order as cancelled", async () => {
 });
 
 it("it returns an error if the user tries to delete another users order", async () => {
-  const ticket = Ticket.build({ title: "concert", price: 20 });
+  const ticket = Ticket.build({
+    id: mongoose.mongo.ObjectId(),
+    title: "concert",
+    price: 20,
+  });
   await ticket.save();
 
   const userOne = global.signin();
@@ -47,4 +57,27 @@ it("it returns an error if the user tries to delete another users order", async 
     .expect(401);
 });
 
-it.todo("emits a order cancelled event");
+it("emits a order cancelled event", async () => {
+  const ticket = Ticket.build({
+    id: mongoose.mongo.ObjectId(),
+    title: "concert",
+    price: 20,
+  });
+  await ticket.save();
+
+  const user = global.signin();
+
+  const { body: order } = await request(app)
+    .post("/api/orders")
+    .set("Cookie", user)
+    .send({ ticketId: ticket.id })
+    .expect(201);
+
+  await request(app)
+    .delete(`/api/orders/${order.id}`)
+    .set("Cookie", user)
+    .send()
+    .expect(204);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
+});
