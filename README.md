@@ -330,3 +330,17 @@ Increment the 'version' number whenever the primary service responsible for a re
 - Install required dependencies
 - Create expiration-redis-depl.yaml and expiration-depl.yaml files in k8s directory
 - Edit skaffold.yaml file to add paths
+
+# Handling Payments
+
+- Create Payments folder in the root directory
+- Install required dependencies
+- Create payments-depl.yaml and payments-mongo-depl.yaml files in k8s directory
+- Edit skaffold.yaml file to add paths
+- Run: npm i stripe --> in payments directory
+- Visit: https://stripe.com/en-in
+- Create account and get Publish key and Secret Key from stripe
+- Run command: kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<yourStripeSecretKey>
+- Run: kubectl get secrets
+- Add env to payments-depl.yaml file in k8s folder
+- Create a new file called stripe.ts inside src folder of payments directory
