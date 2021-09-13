@@ -344,3 +344,12 @@ Increment the 'version' number whenever the primary service responsible for a re
 - Run: kubectl get secrets
 - Add env to payments-depl.yaml file in k8s folder
 - Create a new file called stripe.ts inside src folder of payments directory
+
+# Deploying
+
+While pushing code to git repository, we can follow two approaches:
+
+- Mono repo approach
+- Repo per service approach
+
+Run a github action, this will call this action everytime there is a changes made to our main branch, for more information visit https://docs.github.com/en/actions/reference/events-that-trigger-workflows
