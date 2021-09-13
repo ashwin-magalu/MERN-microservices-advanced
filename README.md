@@ -381,3 +381,18 @@ While pushing code to git repository, we can follow two approaches:
 - Run: doctl kubernetes cluster kubeconfig save <clusterName> --> To get connection info for our new cluster
 - Run: kubectl config view --> List all contexts
 - Run: kubectl config use-context <contextName> --> To use a different context
+- Create a new workflow in github repository's action section
+- Create deploy actions .yml files for all clusters we need
+- Add Code as shown in this file: https://github.com/ashwin-magalu/MERN-microservices-advanced/blob/main/.github/workflows/deploy-auth.yml
+- Add DOCKER_USERNAME and DOCKER_PASSWORD secrets in settings > secrets section
+- Change ingress-srv to act based on development mode or production mode
+
+- Adding secrets to Digital Ocean:
+
+  - Run: kubectl config use-context <contextName>
+  - Run: kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<yourJWTKey>
+  - Run: kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<yourStripeKey>
+
+- Visit: https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean
+- Run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/do/deploy.yaml
+- 
