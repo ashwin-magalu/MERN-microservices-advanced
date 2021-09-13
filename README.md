@@ -357,14 +357,7 @@ Run a github action, this will call this action everytime there is a changes mad
 - Go to actions section in your git repository
 - Select simple workflow or setup a workflow yourself
 - Rename yml file to tests.yml and remove all code inside that
-- Add following content:
-  name: tests
-  on:
-  pull_request
-  jobs:
-  build:
-  runs-on: ubuntu-latest
-  steps: - uses: actions/checkout@v2 - run: cd auth && npm install && npm run test:ci
+- Add code as shown in the following file: https://github.com/ashwin-magalu/MERN-microservices-advanced/blob/main/.github/workflows/tests.yml
 - Click on Start Commit button in top-right and click on commit new file
 - Now we have created a github action
 - Add following script in auth folder's package.json file: "test:ci": "jest"
