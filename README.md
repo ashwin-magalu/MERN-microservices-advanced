@@ -368,3 +368,9 @@ Run a github action, this will call this action everytime there is a changes mad
 - Click on Start Commit button in top-right and click on commit new file
 - Now we have created a github action
 - Add following script in auth folder's package.json file: "test:ci": "jest"
+- Create a new branch
+- Make some changes in auth folder
+- Commit changes to this new branch and push it to remote repository
+- Create a PR
+- Github action is activated in your PR, confirm that this action check is passed before merging
+- Merge this branch onto master branch
