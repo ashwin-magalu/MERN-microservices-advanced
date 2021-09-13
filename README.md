@@ -351,9 +351,7 @@ While pushing code to git repository, we can follow two approaches:
 
 - Mono repo approach (we are following this approach)
 - Repo per service approach
-
-Run a github action, this will call this action everytime there is a changes made to our main branch, for more information visit https://docs.github.com/en/actions/reference/events-that-trigger-workflows
-
+- Run a github action, this will call this action every time there is a changes made to our main branch, for more information visit https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 - Go to actions section in your git repository
 - Select simple workflow or setup a workflow yourself
 - Rename yml file to tests-auth.yml and remove all code inside that
@@ -369,3 +367,17 @@ Run a github action, this will call this action everytime there is a changes mad
 - Merge this branch onto master branch
 - Create multiple .yml files in workflow directory inside git repository for multiple tests
 - Add "test:ci": "jest" script in all those directories
+
+# Deployment using Digital Ocean
+
+- Visit: https://www.digitalocean.com/ and sign up
+- Click on Create > Cluster
+- Rename your cluster and click on create cluster button
+- Follow the steps, if you don't see the steps to be followed pop up, visit: https://github.com/digitalocean/doctl
+- Install doctl
+- Run: doctl --> in terminal to check whether it is installed properly
+- Go back to digitalocean dashboard > click on API and generate new token > copy the newly genrated token
+- Run: doctl auth init <copiedToken>
+- Run: doctl kubernetes cluster kubeconfig save <clusterName> --> To get connection info for our new cluster
+- Run: kubectl config view --> List all contexts
+- Run: kubectl config use-context <contextName> --> To use a different context
