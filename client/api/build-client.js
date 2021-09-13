@@ -6,7 +6,8 @@ const buildClient = ({ req }) => {
     /* http://namespaceName.serviceInThatNamespace.svc.cluster.local/api/users/currentuser */
 
     return axios.create({
-      baseURL: "http://ingress-nginx.ingress-nginx.svc.cluster.local",
+      //baseURL: "http://ingress-nginx.ingress-nginx.svc.cluster.local",
+      baseURL: "whatever_your_purchased_domain_is",
       headers: req.headers,
     });
   } else {

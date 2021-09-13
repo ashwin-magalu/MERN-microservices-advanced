@@ -395,4 +395,5 @@ While pushing code to git repository, we can follow two approaches:
 
 - Visit: https://kubernetes.github.io/ingress-nginx/deploy/#digital-ocean
 - Run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/do/deploy.yaml
+- Buy a domain from any domain service provider
 - 
