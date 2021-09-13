@@ -349,7 +349,22 @@ Increment the 'version' number whenever the primary service responsible for a re
 
 While pushing code to git repository, we can follow two approaches:
 
-- Mono repo approach
+- Mono repo approach (we are following this approach)
 - Repo per service approach
 
 Run a github action, this will call this action everytime there is a changes made to our main branch, for more information visit https://docs.github.com/en/actions/reference/events-that-trigger-workflows
+
+- Go to actions section in your git repository
+- Select simple workflow or setup a workflow yourself
+- Rename yml file to tests.yml and remove all code inside that
+- Add following content:
+  name: tests
+  on:
+  pull_request
+  jobs:
+  build:
+  runs-on: ubuntu-latest
+  steps: - uses: actions/checkout@v2 - run: cd auth && npm install && npm run test:ci
+- Click on Start Commit button in top-right and click on commit new file
+- Now we have created a github action
+- Add following script in auth folder's package.json file: "test:ci": "jest"
