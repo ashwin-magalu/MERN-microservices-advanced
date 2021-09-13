@@ -356,7 +356,7 @@ Run a github action, this will call this action everytime there is a changes mad
 
 - Go to actions section in your git repository
 - Select simple workflow or setup a workflow yourself
-- Rename yml file to tests.yml and remove all code inside that
+- Rename yml file to tests-auth.yml and remove all code inside that
 - Add code as shown in the following file: https://github.com/ashwin-magalu/MERN-microservices-advanced/blob/main/.github/workflows/tests.yml
 - Click on Start Commit button in top-right and click on commit new file
 - Now we have created a github action
@@ -367,3 +367,5 @@ Run a github action, this will call this action everytime there is a changes mad
 - Create a PR
 - Github action is activated in your PR, confirm that this action check is passed before merging
 - Merge this branch onto master branch
+- Create multiple .yml files in workflow directory inside git repository for multiple tests
+- Add "test:ci": "jest" script in all those directories
